@@ -1,0 +1,63 @@
+<aiml version="1.0.1" encoding="UTF-8">
+    <!-- std-startup.xml -->
+
+    <category>
+        <pattern>HELLO</pattern>
+        <template>
+            Hello. May I plaese have your name? Repsond with "My name is YOURNAME".
+        </template>
+    </category>
+
+    <category>
+        <pattern>My name is *</pattern>
+        <template>
+            Hello <set name = "username"> <star/> .</set> What would you like to know about the Chat Bot Generator?
+        </template>
+    </category>
+
+    <category>
+        <pattern>WHAT ARE YOU</pattern>
+        <template>
+            I'm a bot, silly!
+        </template>
+    </category>
+
+    <category>
+        <pattern>ONE TIME I *</pattern>
+        <template>
+            <random>
+                <li>Go on.</li>
+                <li>How old are you?</li>
+                <li>Be more specific.</li>
+                <li>I did not know that.</li>
+                <li>Are you telling the truth?</li>
+                <li>I don't know what that means.</li>
+                <li>Try to tell me that another way.</li>
+                <li>Are you talking about an animal, vegetable or mineral?</li>
+                <li>What is it?</li>
+            </random>
+        </template>
+    </category>
+
+    <category>
+        <pattern>HI</pattern>
+        <template>
+          <srai>HELLO</srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>WHAT CAN I DO WITH THIS APP</pattern>
+        <template>
+            You can generate chat bots with this app.
+        </template>
+    </category>
+
+    <category>
+        <pattern>REPEAT AFTER ME *</pattern>
+        <template>
+            <star/>
+        </template>
+    </category>
+
+</aiml>

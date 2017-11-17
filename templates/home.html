@@ -1,0 +1,119 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link href="static/css/layout.css" rel="stylesheet" type="text/css" media="all">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <meta charset="utf-8">
+
+  <!--<style>
+  .container {
+	margin: 0 auto;
+	width: 80%;
+	background: #bbb;
+	border-radius: 5px;
+	padding: 10px;
+  height: 800px;
+	resize: vertical;
+}
+
+input[type=text], input[type=submit]{
+	font-size: 1.4em;
+	text-align: left;
+	margin: 10px auto 0 auto;
+	padding: 4px;
+	display: inline;
+	font-family: verdana;
+}
+input[type=text]{
+	width: 70%;
+	font-style: italic;
+	border-bottom: 1px solid #666;
+	border-left: 0px;
+	border-right: 0px;
+	border-top: 0px;
+	background: #eee;
+	resize: vertical;
+}
+
+input[type=submit]{
+	width: 15%;
+	text-align: center;
+	font-family: verdana;
+}
+
+
+#response {
+	margin: 0 auto;
+	height: 8em;
+	width: 95%;
+	padding: 5px;
+	border: 0px solid #eee;
+	font-family: Verdana;
+	font-size: 1.4em;
+	overflow: auto;
+	background: rgba(255,255,255,.5);
+	resize: vertical;
+  height: 700px;
+}
+
+.blue {
+	color: blue;
+}
+
+.red {
+	color: red;
+}
+</style> -->
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <script>
+
+  /* Scroll textbox to bottom */
+  window.setInterval(function() {
+  	var elem = document.getElementById("response");
+  	elem.scrollTop = elem.scrollHeight;
+  }, 500);
+
+  /*Enter button to Submit*/
+  document.addEventListener("keyup", function(e) {
+  	if (e.keyCode == 13) {
+  		reply();
+  	}
+  });
+
+  function reply() {
+   var chatbox = document.getElementById("response");
+   var value = document.getElementById("userInput").value;
+   var url = "http://127.0.0.1:5000/chat?chat=" + value;
+   var mb = "<br/><span style='color: red;'>Hades:</span> ";
+
+   $.ajax({
+       url: url,
+       type: "get",
+       success: function(data) {
+         chatbox.innerHTML += mb + data;
+       }
+     });
+  	document.getElementById("userInput").value = '';
+  }
+  </script>
+</head>
+
+<body>
+  <div class="container">
+	<div id="response"><span class="red">Hades:</span> Hello. Welcome to the chat bot generator. I can teach you how to use our site. What would you like to know?</div>
+
+<center>
+	<input  id="userInput" type="text" placeholder="Type here"/>
+
+	<input type="submit" id="chatSend" value="send" onclick="reply()" onkeydown="enter()"/>
+
+</div>
+
+</body>
+</html>
